@@ -1,0 +1,48 @@
+<p *ngIf="!dogs"><em>Loading...</em></p>
+
+<form #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input type="text"
+    #name='ngModel' name="name" [(ngModel)]="formModel.name">
+  </div>
+
+  <div>
+    <label for="age">
+      Age
+    </label>
+    <input type="text"
+           #age='ngModel' name="age" [(ngModel)]="formModel.age">
+  </div>
+
+  <div>
+    <label for="breed">
+      Breed
+    </label>
+    <input type="text"
+           #breed='ngModel' name="breed" [(ngModel)]="formModel.breed">
+  </div>
+
+  <button class="button" type="submit">Create</button>
+</form>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="dogs">
+  <thead>
+    <tr>
+      <th>Identifier</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Breed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dog of dogs">
+      <td>{{ dog.id }}</td>
+      <td>{{ dog.name }}</td>
+      <td>{{ dog.age }}</td>
+      <td>{{ dog.breed }}</td>
+    </tr>
+  </tbody>
+</table>
